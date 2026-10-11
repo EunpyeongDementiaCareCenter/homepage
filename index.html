@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>은평구치매안심센터</title>
+<meta name="description" content="은평구치매안심센터 — 치매 예방부터 조기검진, 등록관리, 가족 지원까지 은평구민과 함께합니다.">
+<link rel="canonical" href="https://epdementia.co.kr/">
+<meta property="og:title" content="은평구치매안심센터">
+<meta property="og:description" content="치매 걱정, 혼자 하지 마세요. 은평구치매안심센터가 함께합니다.">
+<meta property="og:url" content="https://epdementia.co.kr/">
+<meta property="og:type" content="website">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf8f3; --surface:#ffffff; --ink:#1f2a2e; --muted:#5a676c;
+  --brand:#2f6b5a; --brand-ink:#ffffff; --accent:#e89a3c; --soft:#e8f1ec; --line:#e3ddd2;
+  --radius:18px; --fs:18px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141a1b; --surface:#1d2527; --ink:#eef2f1; --muted:#a8b4b3;
+    --brand:#7cc3a8; --brand-ink:#0f1a16; --accent:#f0b066; --soft:#21302b; --line:#2c3638;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141a1b; --surface:#1d2527; --ink:#eef2f1; --muted:#a8b4b3;
+  --brand:#7cc3a8; --brand-ink:#0f1a16; --accent:#f0b066; --soft:#21302b; --line:#2c3638;
+}
+*{box-sizing:border-box}
+html{font-size:var(--fs); scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  line-height:1.7; word-break:keep-all}
+a{color:inherit}
+.wrap{max-width:1120px; margin:0 auto; padding:0 16px}
+.skip{position:absolute; left:-999px}
+.skip:focus{left:16px; top:16px; background:var(--brand); color:var(--brand-ink); padding:8px 14px; border-radius:8px; z-index:99}
+
+/* header */
+header{position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.bar{display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:68px}
+.logo{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:900; font-size:1.1rem}
+.logo svg{flex:none}
+.logo-img{display:block; height:40px; width:auto; max-width:160px; object-fit:contain; flex:none}
+nav ul{display:flex; gap:4px; list-style:none; margin:0; padding:0}
+nav a{display:block; padding:8px 12px; border-radius:10px; text-decoration:none; font-weight:500}
+nav a:hover,nav a:focus-visible{background:var(--soft)}
+.tools{display:flex; gap:6px; align-items:center}
+.btn-sm{border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:10px;
+  padding:6px 10px; font:inherit; font-size:.85rem; cursor:pointer}
+.menu-toggle{display:none}
+@media (max-width:860px){
+  nav{display:none; position:absolute; left:0; right:0; top:68px; background:var(--surface); border-bottom:1px solid var(--line)}
+  nav.open{display:block}
+  nav ul{flex-direction:column; padding:8px 16px 16px}
+  .menu-toggle{display:inline-block}
+}
+
+/* hero */
+.hero{padding:64px 0 56px}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center}
+.eyebrow{display:inline-block; background:var(--soft); color:var(--brand); font-weight:700;
+  padding:4px 12px; border-radius:999px; font-size:.85rem}
+h1{font-size:clamp(2rem,5vw,3.1rem); line-height:1.25; margin:14px 0 16px; font-weight:900; letter-spacing:-.02em}
+h1 em{font-style:normal; color:var(--brand)}
+.lead{font-size:1.1rem; color:var(--muted); margin:0 0 28px}
+.cta{display:flex; flex-wrap:wrap; gap:12px}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:14px 22px; border-radius:14px;
+  font-weight:700; text-decoration:none; font-size:1.05rem}
+.btn-primary{background:var(--brand); color:var(--brand-ink)}
+.btn-ghost{border:2px solid var(--brand); color:var(--brand)}
+.hero-card{background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.hero-card h2{margin:0 0 6px; font-size:1.1rem}
+.phone{font-size:2rem; font-weight:900; color:var(--brand); text-decoration:none; display:block; letter-spacing:.01em}
+.hero-card .small{color:var(--muted); font-size:.9rem}
+.hours{margin:18px 0 0; padding:0; list-style:none; border-top:1px dashed var(--line)}
+.hours li{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed var(--line)}
+@media (max-width:860px){ .hero-grid{grid-template-columns:1fr} .hero{padding:40px 0} }
+
+/* sections */
+section{padding:56px 0}
+.sec-head{margin-bottom:28px}
+.sec-head h2{font-size:clamp(1.5rem,3.5vw,2rem); margin:0 0 6px; font-weight:900}
+.sec-head p{margin:0; color:var(--muted)}
+.alt{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px}
+.alt .card{background:var(--bg)}
+.card .ico{width:52px; height:52px; border-radius:14px; background:var(--soft); color:var(--brand);
+  display:grid; place-items:center; margin-bottom:14px}
+.card h3{margin:0 0 6px; font-size:1.15rem}
+.card p{margin:0; color:var(--muted); font-size:.95rem}
+
+/* steps */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset:s}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.step{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px; position:relative}
+.step::before{counter-increment:s; content:counter(s); display:grid; place-items:center; width:36px; height:36px;
+  border-radius:50%; background:var(--accent); color:#fff; font-weight:900; margin-bottom:10px}
+.step h3{margin:0 0 4px; font-size:1.05rem}
+.step p{margin:0; color:var(--muted); font-size:.92rem}
+
+/* feature */
+.feature{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+@media (max-width:760px){.feature{grid-template-columns:1fr}}
+.feature .card{border-left:6px solid var(--accent)}
+.tag{display:inline-block; font-size:.8rem; font-weight:700; color:var(--accent); margin-bottom:6px}
+
+/* notice */
+.notice{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+.post summary{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 22px;
+  cursor:pointer; font-weight:700; list-style:none}
+.post summary::-webkit-details-marker{display:none}
+.post summary:hover{background:var(--soft)}
+.pin{flex:none; background:var(--accent); color:#fff; font-size:.8rem; padding:2px 10px; border-radius:999px}
+.post-body{padding:4px 22px 24px; border-top:1px solid var(--line)}
+.post-body h3{font-size:1.05rem; margin:22px 0 8px; color:var(--brand)}
+.post-body ol,.post-body ul{margin:0; padding-left:1.4em}
+.post-body li{margin:4px 0}
+.files{list-style:none; padding:0 !important; display:grid; gap:6px}
+.files a{display:block; padding:10px 14px; border:1px solid var(--line); border-radius:10px; text-decoration:none; background:var(--bg)}
+.files a::before{content:"⬇ "; color:var(--brand)}
+.files a:hover{border-color:var(--brand)}
+.callout{background:var(--soft); padding:12px 16px; border-radius:10px; margin:14px 0 0; font-weight:500}
+.note{color:var(--muted); font-size:.92rem; margin:6px 0}
+.apply{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.apply>div{border:1px solid var(--line); border-radius:12px; padding:16px; background:var(--bg)}
+.apply p{margin:6px 0 0; font-size:.95rem}
+@media (max-width:700px){.apply{grid-template-columns:1fr}}
+
+/* mission */
+.mission{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:22px}
+.mission>div{background:var(--bg); border:1px solid var(--line); border-left:6px solid var(--brand); border-radius:var(--radius); padding:22px}
+.mission h3{margin:0 0 8px; font-size:1.1rem}
+.mission h3 small{color:var(--muted); font-weight:500; font-size:.85rem}
+.mission p{margin:0}
+.mission ul{margin:0; padding-left:1.2em}
+.mission .en{grid-column:1/-1; border-left-color:var(--accent)}
+@media (max-width:760px){.mission{grid-template-columns:1fr}}
+footer .org{line-height:1.9}
+
+/* contact */
+.contact{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:10px 16px}
+dt{font-weight:700}
+dd{margin:0; color:var(--muted)}
+.map{min-height:260px; border-radius:var(--radius); border:2px dashed var(--line); display:grid; place-items:center;
+  color:var(--muted); text-align:center; padding:20px; background:var(--surface)}
+.todo{background:#fff3cd; color:#7a5300; padding:0 6px; border-radius:6px; font-weight:700}
+
+footer{padding:36px 0 48px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line)}
+footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px}
+:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="은평구치매안심센터 홈">
+      <img class="logo-img" src="logo.png" alt="" height="40"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <svg class="logo-fallback" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true" style="display:none">
+        <circle cx="18" cy="18" r="17" fill="var(--brand)"/>
+        <path d="M18 27s-8-4.8-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 6.2-8 11-8 11z" fill="var(--brand-ink)"/>
+      </svg>
+      은평구치매안심센터
+    </a>
+    <nav id="nav" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="#about">센터소개</a></li>
+        <li><a href="#services">주요사업</a></li>
+        <li><a href="#how">이용안내</a></li>
+        <li><a href="#notice">공지사항</a></li>
+        <li><a href="#contact">오시는 길</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <button class="btn-sm" id="fontUp" aria-label="글자 크게">가+</button>
+      <button class="btn-sm" id="fontDown" aria-label="글자 작게">가−</button>
+      <button class="btn-sm menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="nav">메뉴</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div id="top" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">은평구민 누구나 무료로 이용</span>
+        <h1>치매 걱정,<br><em>혼자 하지 마세요.</em></h1>
+        <p class="lead">예방부터 조기검진, 등록관리, 가족 지원까지<br>은평구치매안심센터가 어르신과 가족 곁에 함께합니다.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#how">검진 받는 방법</a>
+          <a class="btn btn-ghost" href="#services">센터 사업 보기</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="상담 안내">
+        <h2>상담·예약 문의</h2>
+        <a class="phone" href="tel:02-388-8233">02-388-8233</a>
+        <p class="small">전화 또는 방문 상담 후 서비스를 안내해 드립니다. (팩스 02-388-8235)</p>
+        <ul class="hours">
+          <li><span>평일</span><strong>09:00 ~ 18:00</strong></li>
+          <li><span>주말·공휴일</span><strong>휴무</strong></li>
+          <li><span>치매상담콜센터 (24시간)</span><a href="tel:1899-9988"><strong>1899-9988</strong></a></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+
+  <section id="about" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>센터소개</h2>
+        <p>은평구치매안심센터는 지역 치매관리사업을 통합적으로 수행하는 은평구의 치매관리 거점기관입니다.</p>
+      </div>
+      <div class="mission">
+        <div>
+          <h3>우리 기관은 어떤 곳인가요? <small>(설립 목적)</small></h3>
+          <p>지역사회 치매 예방 및 조기 발견, 치매 환자 통합관리 서비스를 <strong>무상으로</strong> 제공하는 기관입니다.</p>
+        </div>
+        <div>
+          <h3>최근 어떤 활동을 하고 있나요? <small>(사업 안내)</small></h3>
+          <ul>
+            <li>치매 선별 검진 및 정밀 검사 (CDR 예약 지원)</li>
+            <li>치매 치료관리비 지원 서비스</li>
+            <li>치매예방·인지강화 프로그램, 가족 지원, 치매안심마을 조성 등</li>
+          </ul>
+        </div>
+        <div class="en" lang="en">
+          <h3>About Us</h3>
+          <p><strong>Eunpyeong-gu Dementia Care Center</strong> is a non-profit community organization in Eunpyeong-gu, Seoul, Korea. Our mission is to provide free dementia prevention, early detection (screening and diagnostic test support), and integrated care services for people living with dementia and their families, including treatment cost support.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg></div>
+          <h3>예방</h3><p>건강한 생활습관과 인지활동으로 치매 위험을 미리 줄입니다.</p></div>
+        <div class="card"><div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>조기발견</h3><p>선별검사와 진단검사로 인지 저하를 일찍 발견합니다.</p></div>
+        <div class="card"><div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+          <h3>함께 돌봄</h3><p>환자와 가족, 이웃이 함께하는 치매 친화 마을을 만듭니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>주요사업</h2>
+        <p>치매안심센터 표준 사업을 중심으로 은평구 특화사업을 함께 운영합니다.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><h3>치매 조기검진</h3><p>만 60세 이상 어르신 대상 선별검사, 필요 시 진단·감별검사 연계</p></div>
+        <div class="card"><h3>등록·사례관리</h3><p>상담, 상태별 맞춤 사례관리, 조호물품 등 환자 지원 서비스</p></div>
+        <div class="card"><h3>치매예방·인지강화교실</h3><p>정상·경도인지장애 어르신을 위한 인지훈련과 신체활동 프로그램</p></div>
+        <div class="card"><h3>치매환자 쉼터</h3><p>경증 치매 어르신의 인지재활과 일상 회복을 돕는 낮 시간 프로그램</p></div>
+        <div class="card"><h3>가족 지원</h3><p>가족교실, 자조모임, 힐링 프로그램으로 돌봄 부담을 덜어드립니다.</p></div>
+        <div class="card"><h3>치료관리비 지원</h3><p>기준에 해당하는 치매환자의 치료비 본인부담금 지원</p></div>
+        <div class="card"><h3>인식개선·치매파트너</h3><p>주민 교육과 캠페인, 치매파트너·치매극복선도단체 양성</p></div>
+        <div class="card"><h3>실종 예방</h3><p>배회 위험 어르신 지문 사전등록 안내, 배회감지기 보급 연계</p></div>
+        <div class="card"><h3>치매안심마을</h3><p>지역 주민·상점·기관과 함께 치매 친화 환경을 조성합니다.</p></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:44px">
+        <h2 style="font-size:1.4rem">은평구 특화사업</h2>
+      </div>
+      <div class="feature">
+        <div class="card">
+          <span class="tag">2022 서울시 치매관리사업 성과평가 최우수상</span>
+          <h3>체인지바이어스</h3>
+          <p>‘주민이 움직이면 마을이 바뀐다’는 주민참여형 치매친화 사업입니다. 어르신이 참여하는 치매전문기자단, 지역 상점과 함께 만드는 치매안심 상점 지도 등을 운영합니다.</p>
+        </div>
+        <div class="card">
+          <span class="tag">걷기로 지키는 기억</span>
+          <h3>기억가꿈길 걷기 챌린지</h3>
+          <p>야외 걷기를 통해 뇌 건강과 사회적 교류를 함께 지키는 주민 참여 챌린지입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>이용안내 — 조기검진 받는 방법</h2>
+        <p>모든 상담과 검사는 무료입니다. 신분증을 지참해 주세요.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>전화·방문 상담</h3><p>센터로 연락하시면 상담 후 일정을 잡아드립니다.</p></div>
+        <div class="step"><h3>선별검사</h3><p>간단한 인지선별검사로 현재 상태를 확인합니다.</p></div>
+        <div class="step"><h3>진단·감별검사</h3><p>인지저하 소견 시 협약병원 등 전문 검사로 연계합니다.</p></div>
+        <div class="step"><h3>등록·맞춤 서비스</h3><p>결과에 따라 예방·쉼터·사례관리 등 서비스를 연결합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="notice">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>공지사항</h2>
+        <p>센터 프로그램 모집과 행사 소식을 알려드립니다.</p>
+      </div>
+      <div class="notice">
+        <details class="post" open>
+          <summary><span class="post-title">치매치료관리비 신청양식 안내 (신청서, 개인정보동의서, 행정동의서, 소득재산조사동의서)</span><span class="pin">공지</span></summary>
+          <div class="post-body">
+            <h3>첨부파일</h3>
+            <ul class="files">
+              <li><a href="작성서류(예시).pdf" download>작성서류(예시).pdf</a></li>
+              <li><a href="4유형 소득재산조사 동의서.jpg" download>4유형 소득재산조사 동의서.jpg</a></li>
+              <li><a href="개인정보 수집 및 이용, 제공 동의서_페이지_1.jpg" download>개인정보 수집 및 이용, 제공 동의서_페이지_1.jpg</a></li>
+              <li><a href="개인정보 수집 및 이용, 제공 동의서_페이지_2.jpg" download>개인정보 수집 및 이용, 제공 동의서_페이지_2.jpg</a></li>
+              <li><a href="치매치료관리비 지원 신청서.jpg" download>치매치료관리비 지원 신청서.jpg</a></li>
+              <li><a href="행정정보 공동이용 사전 동의서.jpg" download>행정정보 공동이용 사전 동의서.jpg</a></li>
+              <li><a href="치매치료관리비 신청양식(모음).zip" download><strong>치매치료관리비 신청양식(모음).zip</strong> — 전체 한 번에 받기</a></li>
+            </ul>
+            <p class="callout">첨부파일을 내려받아 예시를 참고하여 1~4번 서류를 작성한 후, 구비서류와 함께 제출해 주세요.</p>
+
+            <h3>작성서류</h3>
+            <p class="note">※ 가족관계증명서 제출 시 대리 서명 가능 (신분증 대조)</p>
+            <ol>
+              <li>치료비 지원 신청서</li>
+              <li>개인정보 동의서 (작성대상: 지원대상자)</li>
+              <li>행정정보 이용 동의서 (작성대상: 지원대상자)</li>
+              <li>소득재산조사 동의서 &lt;주민등록등본 기준&gt;
+                <ul>
+                  <li>배우자와 함께 거주하는 경우: 대상자 및 배우자 모두 작성</li>
+                  <li>배우자와 별도 거주 또는 사망 시: 대상자만 작성</li>
+                </ul>
+              </li>
+            </ol>
+
+            <h3>구비서류 (증빙자료)</h3>
+            <ol>
+              <li><strong>처방전</strong>: 치매약제명 및 질병분류기호 기재 필수 (12개월 이내 발급)</li>
+              <li><strong>주민등록등본</strong>: 대상자·배우자 포함, 주민번호 뒷자리 표시 (90일 이내)</li>
+              <li><strong>가족관계증명서</strong>: 대상자-보호자 관계 확인용, 주민번호 뒷자리 표시 (90일 이내)</li>
+              <li><strong>통장사본</strong>: 대상자, 배우자, 직계가족 명의 중 택1</li>
+              <li><strong>신분증</strong>: 대상자 및 보호자</li>
+              <li><strong>기타</strong>: 기초생활수급자 또는 차상위계층 증명서 (해당 시 제출, 미해당 시 생략)</li>
+            </ol>
+            <p class="note">※ 모든 증명서는 유효기간 경과 시 접수가 불가하오니 발급 일자를 확인해 주세요.</p>
+
+            <h3>신청방법 (택1)</h3>
+            <div class="apply">
+              <div>
+                <strong>온라인</strong>
+                <p>작성서류와 구비서류를 준비하여 이메일(스캔본) 또는 팩스로 제출</p>
+                <p>▶ 팩스: <a href="tel:02-388-8235">02-388-8235</a><br>▶ 이메일: <a href="mailto:dmsvud22@hanmail.net">dmsvud22@hanmail.net</a></p>
+              </div>
+              <div>
+                <strong>오프라인 &lt;예약제&gt;</strong>
+                <p>구비서류 지참 후 센터 방문 또는 가정방문 접수</p>
+                <p>▶ 주소: 서울특별시 은평구 연서로34길 11 불광보건지소 1층<br>▶ 사전예약 필수: <a href="tel:02-388-8233">02-388-8233</a> (내선 2번)<br>▶ 담당자: 치매치료관리비 최홍진</p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><h2>오시는 길</h2></div>
+      <div class="contact">
+        <div class="card">
+          <dl>
+            <dt>주소</dt><dd>서울특별시 은평구 연서로34길 11, 1층<br>(불광동, 은평구불광보건지소)</dd>
+            <dt>대표전화</dt><dd><a href="tel:02-388-8233">02-388-8233</a></dd>
+            <dt>팩스</dt><dd>02-388-8235</dd>
+            <dt>운영시간</dt><dd>평일 09:00 ~ 18:00 · 주말/공휴일 휴무</dd>
+            <dt>홈페이지</dt><dd>epdementia.co.kr</dd>
+          </dl>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">대중교통 안내</h3>
+          <dl>
+            <dt>🚇 지하철</dt><dd>3호선·6호선 <strong>연신내역 3번 출구</strong>, 도보 약 10분</dd>
+            <dt>🚌 버스</dt><dd>7211, 571, 701, 706, 709, 720번<br><strong>불광지구대</strong> 정류장 하차</dd>
+            <dt>🚐 마을버스</dt><dd>은평06번 <strong>불광보건지소</strong> 정류장 하차</dd>
+          </dl>
+          <div class="cta" style="margin-top:20px">
+            <a class="btn btn-primary" href="https://map.naver.com/p/search/%EC%9D%80%ED%8F%89%EA%B5%AC%EB%B6%88%EA%B4%91%EB%B3%B4%EA%B1%B4%EC%A7%80%EC%86%8C" target="_blank" rel="noopener">네이버 지도</a>
+            <a class="btn btn-ghost" href="https://map.kakao.com/?q=%EC%9D%80%ED%8F%89%EA%B5%AC%EB%B6%88%EA%B4%91%EB%B3%B4%EA%B1%B4%EC%A7%80%EC%86%8C" target="_blank" rel="noopener">카카오맵</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="org">
+      <strong>은평구치매안심센터</strong> <span lang="en">(Eunpyeong-gu Dementia Care Center)</span><br>
+      대표자: 정규인 &nbsp;|&nbsp; 고유번호: 110-82-67871<br>
+      주소: 서울특별시 은평구 연서로34길 11, 1층 (불광동, 은평구불광보건지소)<br>
+      전화: 02-388-8233 &nbsp;|&nbsp; 팩스: 02-388-8235 &nbsp;|&nbsp; 이메일: <a href="mailto:dmsvud22@hanmail.net">dmsvud22@hanmail.net</a>
+    </div>
+    <div>© 2026 은평구치매안심센터 · epdementia.co.kr</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, size=18;
+  try{ var s=localStorage.getItem('fs'); if(s){ size=parseInt(s,10)||18; } }catch(e){}
+  function apply(){ root.style.setProperty('--fs', size+'px'); try{localStorage.setItem('fs',size)}catch(e){} }
+  apply();
+  document.getElementById('fontUp').onclick=function(){ size=Math.min(size+2,26); apply(); };
+  document.getElementById('fontDown').onclick=function(){ size=Math.max(size-2,15); apply(); };
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('nav');
+  btn.onclick=function(){ var o=nav.classList.toggle('open'); btn.setAttribute('aria-expanded',o); };
+  nav.querySelectorAll('a').forEach(function(a){ a.onclick=function(){ nav.classList.remove('open'); btn.setAttribute('aria-expanded',false); }; });
+})();
+</script>
+</body>
+</html>
